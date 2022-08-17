@@ -44,6 +44,7 @@ i = 0
 a = None
 query = None
 
+#Torrent
 
 @Client.on_message(filters.command(["torrent", "tor"]))
 async def torrent(_, message):
@@ -149,6 +150,8 @@ async def callback_query_previous(_, message):
         parse_mode="markdown",
     )
 
+#transalete
+
 @Client.on_message(filters.command(["tr"]))
 async def left(client,message):
 	if (message.reply_to_message):
@@ -189,12 +192,7 @@ async def left(client,message):
 			 ms = await message.reply_text("You can Use This Command by using reply to message")
 			 await ms.delete()
 
-@Client.on_message(filters.command(["stickerid"]))
-async def stickerid(bot, message):   
-    if message.reply_to_message.sticker:
-       await message.reply(f"**Sticker ID is**  \n `{message.reply_to_message.sticker.file_id}` \n \n ** Unique ID is ** \n\n`{message.reply_to_message.sticker.file_unique_id}`", quote=True)
-    else: 
-       await message.reply("Oops !! Not a sticker file")
+#json
 
 @Client.on_message(filters.command(["json", 'js', 'showjson']))
 async def jsonify(_, message):
@@ -241,137 +239,7 @@ async def jsonify(_, message):
 
 TG_MAX_SELECT_LEN = 400
 
-@Client.on_message(
-    filters.command("purge") &
-    f_onw_fliter
-)
-async def purge(client, message):
-    """ purge upto the replied message """
-    if message.chat.type not in (("supergroup", "channel")):
-        # https://t.me/c/1312712379/84174
-        return
-
-    is_admin = await admin_check(message)
-
-    if not is_admin:
-        return
-
-    status_message = await message.reply_text("...", quote=True)
-    await message.delete()
-    message_ids = []
-    count_del_etion_s = 0
-
-    if message.reply_to_message:
-        for a_s_message_id in range(
-            message.reply_to_message.message_id,
-            message.message_id
-        ):
-            message_ids.append(a_s_message_id)
-            if len(message_ids) == TG_MAX_SELECT_LEN:
-                await client.delete_messages(
-                    chat_id=message.chat.id,
-                    message_ids=message_ids,
-                    revoke=True
-                )
-                count_del_etion_s += len(message_ids)
-                message_ids = []
-        if len(message_ids) > 0:
-            await client.delete_messages(
-                chat_id=message.chat.id,
-                message_ids=message_ids,
-                revoke=True
-            )
-            count_del_etion_s += len(message_ids)
-
-    await status_message.edit_text(
-        f"deleted {count_del_etion_s} messages"
-    )
-    await asyncio.sleep(5)
-    await status_message.delete()
-
-@Client.on_message(
-    filters.command(["pin"]) &
-    admin_fliter
-)
-async def pin(_, message: Message):
-    if not message.reply_to_message:
-        return
-    await message.reply_to_message.pin()
-
-@Client.on_message(
-    filters.command(["unpin"]) &
-    admin_fliter
-)
-async def unpin(_, message: Message):
-    if not message.reply_to_message:
-        return
-    await message.reply_to_message.unpin()
-
-@Client.on_message(filters.incoming & ~filters.private & filters.command('inkick'))
-def inkick(client, message):
-  user = client.get_chat_member(message.chat.id, message.from_user.id)
-  if user.status == ("creator"):
-    if len(message.command) > 1:
-      input_str = message.command
-      sent_message = message.reply_text(script.START_KICK)
-      sleep(20)
-      sent_message.delete()
-      message.delete()
-      count = 0
-      for member in client.iter_chat_members(message.chat.id):
-        if member.user.status in input_str and not member.status in ('administrator', 'creator'):
-          try:
-            client.kick_chat_member(message.chat.id, member.user.id, int(time() + 45))
-            count += 1
-            sleep(1)
-          except (ChatAdminRequired, UserAdminInvalid):
-            sent_message.edit(script.ADMIN_REQUIRED)
-            client.leave_chat(message.chat.id)
-            break
-          except FloodWait as e:
-            sleep(e.x)
-      try:
-        sent_message.edit(script.KICKED.format(count))
-      except ChatWriteForbidden:
-        pass
-    else:
-      message.reply_text(script.INPUT_REQUIRED)
-  else:
-    sent_message = message.reply_text(script.CREATOR_REQUIRED)
-    sleep(5)
-    sent_message.delete()
-    message.delete()
-
-@Client.on_message(filters.incoming & ~filters.private & filters.command('dkick'))
-def dkick(client, message):
-  user = client.get_chat_member(message.chat.id, message.from_user.id)
-  if user.status == ("creator"):
-    sent_message = message.reply_text(script.START_KICK)
-    sleep(20)
-    sent_message.delete()
-    message.delete()
-    count = 0
-    for member in client.iter_chat_members(message.chat.id):
-      if member.user.is_deleted and not member.status in ('administrator', 'creator'):
-        try:
-          client.kick_chat_member(message.chat.id, member.user.id, int(time() + 45))
-          count += 1
-          sleep(1)
-        except (ChatAdminRequired, UserAdminInvalid):
-          sent_message.edit(script.ADMIN_REQUIRED)
-          client.leave_chat(message.chat.id)
-          break
-        except FloodWait as e:
-          sleep(e.x)
-    try:
-      sent_message.edit(script.DKICK.format(count))
-    except ChatWriteForbidden:
-      pass
-  else:
-    sent_message = message.reply_text(script.CREATOR_REQUIRED)
-    sleep(5)
-    sent_message.delete()
-    message.delete()
+# Instatus
 
 @Client.on_message(filters.incoming & ~filters.private & filters.command('instatus'))
 def instatus(client, message):
@@ -402,83 +270,6 @@ def instatus(client, message):
       else:
         uncached += 1
     sent_message.edit(script.STATUS.format(message.chat.title, recently, within_week, within_month, long_time_ago, deleted_acc, bot, uncached))
-
-#paste py
-#Headers
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36",
-    "content-type": "application/json",
-}
-
-#Pastebins
-async def p_paste(message, extension=None):
-    siteurl = "https://pasty.lus.pm/api/v1/pastes"
-    data = {"content": message}
-    try:
-        response = requests.post(url=siteurl, data=json.dumps(data), headers=headers)
-    except Exception as e:
-        return {"error": str(e)}
-    if response.ok:
-        response = response.json()
-        purl = (
-            f"https://pasty.lus.pm/{response['id']}.{extension}"
-            if extension
-            else f"https://pasty.lus.pm/{response['id']}.txt"
-        )
-        return {
-            "url": purl,
-            "raw": f"https://pasty.lus.pm/{response['id']}/raw",
-            "bin": "Pasty",
-        }
-    return {"error": "Unable to reach pasty.lus.pm"}
-
-
-
-
-    
-    
-@Client.on_message(filters.command(["tgpaste", "pasty", "paste"]))
-async def pasty(client, message):
-    pablo = await message.reply_text("`Please wait...`")
-    tex_t = message.text
-    message_s = tex_t
-    if not tex_t:
-        if not message.reply_to_message:
-            await pablo.edit("`Only text and documents are supported.`")
-            return
-        if not message.reply_to_message.text:
-            file = await message.reply_to_message.download()
-            m_list = open(file, "r").read()
-            message_s = m_list
-            os.remove(file)
-        elif message.reply_to_message.text:
-            message_s = message.reply_to_message.text
-    
-    ext = "py"
-    x = await p_paste(message_s, ext)
-    p_link = x["url"]
-    p_raw = x["raw"]
-    
-    pasted = f"**Successfully Paste to Pasty**\n\n**Link:** • [Click here]({p_link})\n\n**Raw Link:** • [Click here]({p_raw})"
-    await pablo.edit(pasted, disable_web_page_preview=True)
-
-#Generate Password
-@Client.on_message(filters.command(["genpassword", 'genpw']))
-async def password(bot, update):
-    message = await update.reply_text(text="`Processing...`")
-    password = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()_+".lower()
-    try:
-        limit = int(message.text)
-    except:
-        await message.edit_text('Limit is wrong')
-        return
-    if limit > 100 or limit <= 0:
-        text = "Sorry... Failed To Create Password, Because Limit is 1 to 100."
-    else:
-        random_value = "".join(random.sample(password, limit))
-        text = f"**Limit :-** `{str(limit)}`.\n**Password :-** `{random_value}`**\n\nJoin @mwpro11",
-        reply_markup = InlineKeyboardMarkup([[InlineKeyboardButton('Movie World', url='https://t.me/mwmoviespro')]])
-    await message.edit_text(text, True)	
 
 #Share Text
 
