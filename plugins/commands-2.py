@@ -11,8 +11,6 @@ from Script import script
 from time import time, sleep
 from datetime import datetime
 from pyrogram.errors import UserNotParticipant
-from plugins.Tools.help_func.extract_user import extract_user
-from plugins.Tools.help_func.last_online import last_online
 from pyrogram import Client, filters
 from urllib.parse import quote
 from info import SUPPORT_CHAT
