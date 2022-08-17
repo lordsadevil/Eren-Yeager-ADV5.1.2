@@ -3,13 +3,13 @@ import asyncio
 import os
 from pyrogram import filters, Client
 
-@Client.on_message((filters.command("report") | filters.regex("@admin")) & filters.group)
+@Client.on_message((filters.command("report") | filters.regex("@admin")) & filters.private)
 async def report_user(bot, message):
     if message.reply_to_message:
         chat_id = message.chat.id
         reporter = str(message.from_user.id)
         mention = message.from_user.mention
-        admins = await bot.get_chat_members(chat_id=chat_id, filter="administrators")
+        admins = await bot.get_chat_members(chat_id=chat_id, filter="administrator")
         success = True
         report = f"𝖱𝖾𝗉𝗈𝗋𝗍𝖾𝗋 : {mention} ({reporter})" + "\n"
         report += f"𝖬𝖾𝗌𝗌𝖺𝗀𝖾 : {message.reply_to_message.link}"
