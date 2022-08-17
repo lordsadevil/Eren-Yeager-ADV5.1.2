@@ -84,12 +84,27 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
-    btn.insert(0,
-        [
-            InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』", 'reqst11'),
-            InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
-        ]
-    )
+    if n_offset == 0:
+        btn.insert(
+            [
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
+            ]
+        )
+    elif off_set is None:
+        btn.insert(
+            [
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
+            ]
+        )
+    else:
+        btn.insert(
+            [
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
+            ]
+        )
 
     if 0 < offset <= 10:
         off_set = 0
@@ -412,12 +427,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ 𝕬𝙳𝙳 〽️𝙴 𝕿𝙾 𝖄𝙾𝚄𝚁 𝕲𝚁𝙾𝚄𝙾𝙿 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
-        ], [
-            InlineKeyboardButton('『𝕾𝙴𝙰𝚁𝙲𝙷』', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('『𝕾𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11')
-        ], [
-            InlineKeyboardButton('『𝙲𝙷𝙰𝙽𝙽𝙴𝙻』', url='https://t.me/+Sw4QUQp-kIU1NjY1'),
+#            InlineKeyboardButton('➕ 𝕬𝙳𝙳 〽️𝙴 𝕿𝙾 𝖄𝙾𝚄𝚁 𝕲𝚁𝙾𝚄𝙾𝙿 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+#        ], [
+#            InlineKeyboardButton('『𝕾𝙴𝙰𝚁𝙲𝙷』', switch_inline_query_current_chat=''),
+#            InlineKeyboardButton('『𝕾𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11')
+#        ], [
+#            InlineKeyboardButton('『𝙲𝙷𝙰𝙽𝙽𝙴𝙻』', url='https://t.me/+Sw4QUQp-kIU1NjY1'),
             InlineKeyboardButton('『𝙶𝚁𝙾𝚄𝙿』', url='https://t.me/mwmoviespro')
         ], [
             InlineKeyboardButton('『𝙷𝙴𝙻𝙿』', callback_data='help'),
@@ -441,12 +456,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer('Piracy Is Crime')
     elif query.data == "help":
         buttons = [[
-            InlineKeyboardButton('『𝙼𝙰𝙽𝚄𝙰𝙻 𝙵𝙸𝙻𝚃𝙴𝚁』', callback_data='manuelfilter'),
-            InlineKeyboardButton('『𝙰𝚄𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁』', callback_data='autofilter'),
-            InlineKeyboardButton('『𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙸𝙾𝙽𝚂』', callback_data='coct')            
-        ], [
-            InlineKeyboardButton('『𝙿𝚄𝚁𝙶𝙴』', callback_data='purge'),
-            InlineKeyboardButton('『𝙿𝙷𝙾𝚃𝙾』', callback_data='photo'),  
+#            InlineKeyboardButton('『𝙼𝙰𝙽𝚄𝙰𝙻 𝙵𝙸𝙻𝚃𝙴𝚁』', callback_data='manuelfilter'),
+#            InlineKeyboardButton('『𝙰𝚄𝚃𝙾 𝙵𝙸𝙻𝚃𝙴𝚁』', callback_data='autofilter'),
+#            InlineKeyboardButton('『𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙸𝙾𝙽𝚂』', callback_data='coct')            
+#        ], [
+#            InlineKeyboardButton('『𝙿𝚄𝚁𝙶𝙴』', callback_data='purge'),
+#            InlineKeyboardButton('『𝙿𝙷𝙾𝚃𝙾』', callback_data='photo'),  
             InlineKeyboardButton('『𝙸𝙼𝙳𝙱』', callback_data='extra')
         ], [            
             InlineKeyboardButton('『𝚃𝙷𝚄𝙶 𝙻𝙸𝙵𝙴』', callback_data='thug'),
@@ -458,7 +473,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('『𝚅𝙸𝙳𝙴𝙾』', callback_data='video')            
         ], [                        
             InlineKeyboardButton('『𝚃𝙴𝙻𝙴𝙶𝚁𝙰𝙿𝙷』', callback_data='tgraph'),            
-            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
+#            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
             InlineKeyboardButton('『𝙽𝙴𝚇𝚃』', callback_data='nxt1')
         ], [
             InlineKeyboardButton('『𝙷𝙾𝙼𝙴』', callback_data='start'),            
@@ -505,24 +520,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "nxt1":
         buttons = [[
-            InlineKeyboardButton('『𝕾𝚃𝙸𝙲𝙺𝙴𝚁 𝙸𝙳』', callback_data='stid'),
-            InlineKeyboardButton('『𝚃𝙾𝚁𝚁𝙴𝙽𝚃』', callback_data='tor'),
+#            InlineKeyboardButton('『𝕾𝚃𝙸𝙲𝙺𝙴𝚁 𝙸𝙳』', callback_data='stid'),
+#            InlineKeyboardButton('『𝚃𝙾𝚁𝚁𝙴𝙽𝚃』', callback_data='tor'),
             InlineKeyboardButton('『𝙲𝙰𝚁𝙱𝙾𝙽』',callback_data='carbon')                
+#        ], [
+#            InlineKeyboardButton('『𝙼𝚄𝚃𝙴』',callback_data='mute'),
+#            InlineKeyboardButton('『𝚁𝙴𝙿𝙾𝚁𝚃』',callback_data='report'),
+#            InlineKeyboardButton('『𝙺𝙸𝙲𝙺』', callback_data='zombies')                                                       
         ], [
-            InlineKeyboardButton('『𝙼𝚄𝚃𝙴』',callback_data='mute'),
-            InlineKeyboardButton('『𝚁𝙴𝙿𝙾𝚁𝚃』',callback_data='report'),
-            InlineKeyboardButton('『𝙺𝙸𝙲𝙺』', callback_data='zombies')                                                       
-        ], [
-            InlineKeyboardButton('『𝙰𝚄𝙳𝙸𝙾𝙱𝙾𝙾𝙺』',callback_data='abook'),            
-            InlineKeyboardButton('『𝙲𝙾𝚄𝙽𝚃𝚁𝚈』', callback_data='country'),
+#            InlineKeyboardButton('『𝙰𝚄𝙳𝙸𝙾𝙱𝙾𝙾𝙺』',callback_data='abook'),            
+#            InlineKeyboardButton('『𝙲𝙾𝚄𝙽𝚃𝚁𝚈』', callback_data='country'),
             InlineKeyboardButton('『𝙵𝚄𝙽』', callback_data='memes')
-        ], [
-            InlineKeyboardButton('『𝙿𝙸𝙽』',callback_data='pin'),
-            InlineKeyboardButton('『𝚃𝚁𝙰𝙽𝚂𝙰𝙻𝙰𝚃𝙴』', callback_data='tr'),
-            InlineKeyboardButton('『𝙻𝙾𝙶𝙾』', callback_data='logo')
-        ], [
+#        ], [
+#            InlineKeyboardButton('『𝙿𝙸𝙽』',callback_data='pin'),
+#            InlineKeyboardButton('『𝚃𝚁𝙰𝙽𝚂𝙰𝙻𝙰𝚃𝙴』', callback_data='tr'),
+#            InlineKeyboardButton('『𝙻𝙾𝙶𝙾』', callback_data='logo')
+#        ], [
             InlineKeyboardButton('『𝙿𝚁𝙴𝚅』', callback_data='help'),
-            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
+#            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
             InlineKeyboardButton('『𝙽𝙴𝚇𝚃』', callback_data='nxt2')
         ], [
             InlineKeyboardButton('『𝙷𝙾𝙼𝙴』', callback_data='start'),            
@@ -700,20 +715,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "nxt2":
         buttons = [[           
-            InlineKeyboardButton('『𝚄𝚁𝙻-𝚂𝙷𝙾𝚁𝚃𝙴𝚁』',callback_data='shortner'),            
-            InlineKeyboardButton('『𝙿𝙰𝚂𝚂-𝙶𝙴𝙽』', callback_data='genpassword'),
+#            InlineKeyboardButton('『𝚄𝚁𝙻-𝚂𝙷𝙾𝚁𝚃𝙴𝚁』',callback_data='shortner'),            
+#            InlineKeyboardButton('『𝙿𝙰𝚂𝚂-𝙶𝙴𝙽』', callback_data='genpassword'),
             InlineKeyboardButton('『𝚂𝙷𝙰𝚁𝙸𝙽𝙶 𝚃𝙴𝚇𝚃』', callback_data='sharetext')                      
         ], [
-            InlineKeyboardButton('『𝙿𝙰𝚂𝚃𝙴』',callback_data='paste'),
+#            InlineKeyboardButton('『𝙿𝙰𝚂𝚃𝙴』',callback_data='paste'),
             InlineKeyboardButton('『𝚆𝙷𝙾𝙸𝚂』', callback_data='who'),
             InlineKeyboardButton('『𝙵𝙸𝙻𝙴 𝚂𝚃𝙾𝚁𝙴』', callback_data='flstr')
         ], [            
-            InlineKeyboardButton('『𝙲𝙾𝚅𝙸𝙳』', callback_data='covid'),
-            InlineKeyboardButton('『𝙲𝙰𝙻𝙲𝚄𝙻𝙰𝚃𝙾𝚁』', callback_data='calculator'),
-            InlineKeyboardButton('『𝙱𝙰𝙽[𝙶]』',callback_data='bang')                                             
-        ], [
+#            InlineKeyboardButton('『𝙲𝙾𝚅𝙸𝙳』', callback_data='covid'),
+#            InlineKeyboardButton('『𝙲𝙰𝙻𝙲𝚄𝙻𝙰𝚃𝙾𝚁』', callback_data='calculator'),
+#            InlineKeyboardButton('『𝙱𝙰𝙽[𝙶]』',callback_data='bang')                                             
+#        ], [
             InlineKeyboardButton('『𝙿𝚁𝙴𝚅』', callback_data='nxt1'),
-            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
+#            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
             InlineKeyboardButton('『𝙷𝙴𝙻𝙿』', callback_data='help')
         ], [
             InlineKeyboardButton('『𝙷𝙾𝙼𝙴』', callback_data='start'),            
@@ -761,145 +776,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "logo":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt1')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.TIPS_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "country":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt2')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.COUNTRY_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "calculator":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt2')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.CALCULATOR_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "bang":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt2')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.BAN_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "photo":
-        buttons = [[
-            InlineKeyboardButton('『𝙱𝚁𝙸𝙶𝙷𝚃』', callback_data="bright"),
-            InlineKeyboardButton('『𝙼𝙸𝚇𝙴𝙳』', callback_data="mix"),
-            InlineKeyboardButton('『𝙱 & 𝚆』', callback_data="b|w"),
-            ],[
-            InlineKeyboardButton('『𝙲𝙸𝚁𝙲𝙻𝙴』', callback_data="circle"),
-            InlineKeyboardButton('『𝙱𝙻𝚄𝚁』', callback_data="blur"),
-            InlineKeyboardButton('『𝙱𝙾𝚁𝙳𝙴𝚁』', callback_data="border"),
-            ],[
-            InlineKeyboardButton('『𝚂𝚃𝙸𝙲𝙺𝙴𝚁』', callback_data="stick"),
-            InlineKeyboardButton('『𝚁𝙾𝚃𝙰𝚃𝙴』', callback_data="rotate"),
-            InlineKeyboardButton('『𝙲𝙾𝙽𝚃𝚁𝙰𝚂𝚃』', callback_data="contrast"),
-            ],[
-            InlineKeyboardButton('『𝚂𝙴𝙿𝙸𝙰』', callback_data="sepia"),
-            InlineKeyboardButton('『𝙿𝙴𝙽𝙲𝙸𝙻』', callback_data="pencil"),
-            InlineKeyboardButton('『𝙲𝙰𝚁𝚃𝙾𝙾𝙽』', callback_data="cartoon"),
-            ],[
-            InlineKeyboardButton('『𝙸𝙽𝚅𝙴𝚁𝚃』', callback_data="inverted"),
-            InlineKeyboardButton('『𝙶𝙻𝙸𝚃𝙲𝙷』', callback_data="glitch"),
-            InlineKeyboardButton('『𝚁𝙴𝙼𝙾𝚅𝙴 𝙱𝙶』', callback_data="removebg")
-            ],[
-            InlineKeyboardButton('『𝙱𝙰𝙲𝙺』', callback_data="help")
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.IMAGE_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "mute":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt1')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.MUTE_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
     elif query.data == "thug":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt1')
@@ -940,66 +816,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "pin":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt1')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.PIN_MESSAGE_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "zombies":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt1')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.ZOMBIES_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "paste":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt2')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.PASTE_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
     elif query.data == "tr":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt2'),
@@ -1021,26 +837,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "purge":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='help')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.PURGE_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
+
     elif query.data == "memes":
         buttons = [[
             InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt2')
@@ -1121,66 +918,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    elif query.data == "genpassword":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝖁𝙰𝙲𝙺', callback_data='nxt2')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.PASSWORD_GEN_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "abook":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝖁𝙰𝙲𝙺', callback_data='nxt1')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.ABOOK_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "covid":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝖁𝙰𝙲𝙺', callback_data='nxt2')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.COVID_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
     elif query.data == "extra":
         buttons = [[                    
             InlineKeyboardButton('👩‍🦯 𝕭ack', callback_data='help'),
@@ -1237,26 +974,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         await query.message.edit_text(
             text=script.PINGS_TXT,
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "stid":
-        buttons = [[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='nxt1')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=script.STICKER_TXT,
             disable_web_page_preview=True,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
@@ -1339,346 +1056,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.ADMIN_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "removebg":
-        buttons = [[     
-            InlineKeyboardButton('『𝚆𝙸𝚃𝙷 𝚆𝙷𝙸𝚃𝙴 𝙱𝙶』', callback_data="rmbgwhite"),
-            InlineKeyboardButton('『𝚆𝙸𝚃𝙷𝙾𝚄𝚃 𝙱𝙶』', callback_data="rmbgplain")
-        ], [
-            InlineKeyboardButton('『𝚂𝚃𝙸𝙲𝙺𝙴𝚁』', callback_data="rmbgsticker")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=" **Select required mode** ",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "stick":
-        buttons = [[                                    
-            InlineKeyboardButton('『𝙽𝙾𝚁𝙼𝙰𝙻』', callback_data="stkr"),
-            InlineKeyboardButton('『𝙴𝙳𝙶𝙴 𝙲𝚄𝚁𝚅𝙴』', callback_data="cur_ved")
-        ], [
-            InlineKeyboardButton('『𝙲𝙸𝚁𝙲𝙻𝙴』', callback_data="circle_sticker")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text="**Select a Type**",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "rotate":
-        buttons = [[      
-            InlineKeyboardButton('『180』', callback_data="180"),
-            InlineKeyboardButton('『90』', callback_data="90")
-        ], [
-            InlineKeyboardButton('『270』', callback_data="270")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text="**Select the Degree**",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "glitch":
-        buttons = [[            
-            InlineKeyboardButton('『𝙽𝙾𝚁𝙼𝙰𝙻』', callback_data="normalglitch"),
-            InlineKeyboardButton('『𝚂𝙲𝙰𝙽 𝙻𝙰𝙸𝙽𝚂』', callback_data="scanlineglitch")
-            ],[
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text="**Select required mode**",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "normalglitch":
-        buttons = [[
-            InlineKeyboardButton('『1』', callback_data="normalglitch1"),
-            InlineKeyboardButton('『2』', callback_data="normalglitch2"),
-            InlineKeyboardButton('『3』', callback_data="normalglitch3")
-        ], [
-            InlineKeyboardButton('『4』', callback_data="normalglitch4"),
-            InlineKeyboardButton('『5』', callback_data="normalglitch5")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='glitch')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text="**Select Glitch power level**",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "scanlineglitch":
-        buttons = [[
-            InlineKeyboardButton('『1』', callback_data="scanlineglitch1"),
-            InlineKeyboardButton('『2』', callback_data="scanlineglitch2"),
-            InlineKeyboardButton('『3』', callback_data="scanlineglitch3")
-        ], [
-            InlineKeyboardButton('『4』', callback_data="scanlineglitch4"),
-            InlineKeyboardButton('『5』', callback_data="scanlineglitch5")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='glitch')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text="**Select Glitch power level**",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML                
-        )
-    elif query.data == "blur":
-        buttons = [[
-            InlineKeyboardButton('『𝙱𝙾𝚇』', callback_data="box"),
-            InlineKeyboardButton('『𝙽𝙾𝚁𝙼𝙰𝙻』', callback_data="normal")
-        ], [
-            InlineKeyboardButton('『𝙶𝙰𝚄𝚂𝚂𝙸𝙰𝙽』', callback_data="gas")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text="**Select Type Of Blur**",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML      
-        )
-    elif query.data == "circle":
-        buttons = [[
-            InlineKeyboardButton('『𝚆𝙸𝚃𝙷 𝙱𝙶』', callback_data="circlewithbg"),
-            InlineKeyboardButton('『𝚆𝙸𝚃𝙷𝙾𝚄𝚃 𝙱𝙶』', callback_data="circlewithoutbg")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=" **Select Required Mode** ",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
-    elif query.data == "border":
-        buttons = [[
-            InlineKeyboardButton(text="『𝚁𝙴𝙳』", callback_data="red"),
-            InlineKeyboardButton(text="『𝙶𝚁𝙴𝙴𝙽』", callback_data="green")
-        ], [
-            InlineKeyboardButton(text="『𝙱𝙻𝙰𝙲𝙺』", callback_data="black"),
-            InlineKeyboardButton(text="『𝙱𝙻𝚄𝙴』", callback_data="blue")
-        ], [
-            InlineKeyboardButton('👩‍🦯 𝕭𝙰𝙲𝙺', callback_data='photo')   
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await query.message.edit_text(
-            text="◾◽◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◽"
-        )
-        await query.message.edit_text(
-            text="◾◾◾"
-        )
-        await query.message.edit_text(
-            text=" **Select Border** ",
-            disable_web_page_preview=True,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML
-        )
- #Pic Modes Made By LordSA
-
-    elif query.data == "bright":
-        await bright(client, query.message)
-        
-    elif query.data == "mix":
-        await mix(client, query.message)
-        
-    elif query.data == "b|w":
-        await black_white(client, query.message)
-        
-    elif query.data == "circlewithbg":
-        await circle_with_bg(client, query.message)
-        
-    elif query.data == "circlewithoutbg":
-        await circle_without_bg(client, query.message)
-        
-    elif query.data == "green":
-        await green_border(client, query.message)
-        
-    elif query.data == "blue":
-        await blue_border(client, query.message)
-        
-    elif query.data == "red":
-        await red_border(client, query.message)
-        
-    elif query.data == "black":
-        await black_border(client, query.message)
-        
-    elif query.data == "circle_sticker":
-        await round_sticker(client, query.message)
-        
-    elif query.data == "inverted":
-        await inverted(client, query.message)
-        
-    elif query.data == "stkr":
-        await sticker(client, query.message)
-        
-    elif query.data == "cur_ved":
-        await edge_curved(client, query.message)
-        
-    elif query.data == "90":
-        await rotate_90(client, query.message)
-        
-    elif query.data == "180":
-        await rotate_180(client, query.message)
-        
-    elif query.data == "270":
-        await rotate_270(client, query.message)
-        
-    elif query.data == "contrast":
-        await contrast(client, query.message)
-        
-    elif query.data == "box":
-        await box_blur(client, query.message)
-        
-    elif query.data == "gas":
-        await g_blur(client, query.message)
-        
-    elif query.data == "normal":
-        await normal_blur(client, query.message)
-        
-    elif query.data == "sepia":
-        await sepia_mode(client, query.message)
-        
-    elif query.data == "pencil":
-        await pencil(client, query.message)
-        
-    elif query.data == "cartoon":
-        await cartoon(client, query.message)
-        
-    elif query.data == "normalglitch1":
-        await normalglitch_1(client, query.message)
-        
-    elif query.data == "normalglitch2":
-        await normalglitch_2(client, query.message)
-        
-    elif query.data == "normalglitch3":
-        await normalglitch_3(client, query.message)
-        
-    elif query.data == "normalglitch4":
-        await normalglitch_4(client, query.message)
-        
-    elif query.data == "normalglitch5":
-        await normalglitch_5(client, query.message)
-        
-    elif query.data == "scanlineglitch1":
-        await scanlineglitch_1(client, query.message)
-        
-    elif query.data == "scanlineglitch2":
-        await scanlineglitch_2(client, query.message)
-        
-    elif query.data == "scanlineglitch3":
-        await scanlineglitch_3(client, query.message)
-        
-    elif query.data == "scanlineglitch4":
-        await scanlineglitch_4(client, query.message)
-        
-    elif query.data == "scanlineglitch5":
-        await scanlineglitch_5(client, query.message)
-        
-    elif query.data == "rmbgwhite":
-        await removebg_white(client, query.message)
-        
-    elif query.data == "rmbgplain":
-        await removebg_plain(client, query.message)
-        
-    elif query.data == "rmbgsticker":
-        await removebg_sticker(client, query.message)
-        
-   #pic mode done
-
-    
+        )            
     elif query.data == 'reqst11':
         await query.answer(f"Hey {query.from_user.first_name} Bro 😍\n\n🎯 Click The Below Button The Files You Want... And Start The Bot Get The File and Go To Your House..😂\n\n Movie World", True)
    
@@ -1838,17 +1216,23 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
-    btn.insert(0, 
-        [
-            InlineKeyboardButton(f'🎬 {search} 🎬', 'reqst11')
-        ]
-    )
-    btn.insert(1,
-        [
-            InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』", 'reqst11'),
-            InlineKeyboardButton(f'『𝚃𝙸𝙿𝚂』', 'tips')
-        ]
-    )
+    if offset != "":
+        key = f"{message.chat.id}-{message.id}"
+        BUTTONS[key] = search
+        req = message.from_user.id if message.from_user else 0
+        btn.insert(
+            [
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
+            ]
+        )
+    else:
+       btn.insert(
+            [
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
+            ]
+        )
         
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
