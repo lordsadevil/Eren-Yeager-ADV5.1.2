@@ -342,7 +342,7 @@ async def telegraph(client, message):
         or (replied.animation and replied.animation.file_size <= 5242880)
         or (
             replied.video
-            and replied.video.file_name.endswith(".mp4")
+            and replied.video.file_name.endswith(".mp4", ".webm", ".mpeg", ".avi")
             and replied.video.file_size <= 5242880
         )
         or (
