@@ -394,7 +394,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     caption=f_caption,
                     protect_content=True if ident == "filep" else False 
                 )
-                await query.answer(f'Hey {query.from_user.first_name} Check PM, I have sent files in pm(നിൻ്റെ pm നോക്ക് അതിൽ ഞാൻ ഇട്ടിട്ടുണ്ട്)', show_alert=True)
+                await query.answer(f'Hey {query.from_user.first_name} Look Below', show_alert=True)
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn!(പൊട്ട എന്നെ unblock ചെയ്യൂ)', show_alert=True)
         except PeerIdInvalid:
