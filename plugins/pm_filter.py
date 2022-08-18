@@ -93,21 +93,22 @@ async def next_page(bot, query):
     if n_offset == 0:
         btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
+#            {total_results}    
             ]
         )
     elif off_set is None:
         btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
             ]
         )
     else:
         btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
             ]
         )
@@ -1225,14 +1226,14 @@ async def auto_filter(client, msg, spoll=False):
         req = message.from_user.id if message.from_user else 0
         btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
             ]
         )
     else:
        btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results}", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
             ]
         )
