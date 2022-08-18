@@ -84,6 +84,7 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
+    movie = movies[(int(movie_))]
         files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
     if 0 < offset <= 10:
         off_set = 0
