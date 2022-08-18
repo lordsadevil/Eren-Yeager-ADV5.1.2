@@ -331,6 +331,8 @@ async def text_to_speech(_, message: Message):
 
 #Telegraph
 
+suffixes = (".mp4", ".webm", ".mpeg", ".avi")
+
 @Client.on_message(filters.command(["tgmedia", "tgraph", "telegraph"]))
 async def telegraph(client, message):
     replied = message.reply_to_message
@@ -342,7 +344,7 @@ async def telegraph(client, message):
         or (replied.animation and replied.animation.file_size <= 5242880)
         or (
             replied.video
-            and replied.video.file_name.endswith(".mp4", ".webm", ".mpeg", ".avi")
+            and replied.video.file_name.endswith(suffixes)
             and replied.video.file_size <= 5242880
         )
         or (
