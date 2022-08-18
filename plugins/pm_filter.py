@@ -467,23 +467,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #            InlineKeyboardButton('『𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙸𝙾𝙽𝚂』', callback_data='coct')            
 #        ], [
 #            InlineKeyboardButton('『𝙿𝚄𝚁𝙶𝙴』', callback_data='purge'),
-#            InlineKeyboardButton('『𝙿𝙷𝙾𝚃𝙾』', callback_data='photo'),  
+#            InlineKeyboardButton('『𝙿𝙷𝙾𝚃𝙾』', callback_data='photo'),
+            InlineKeyboardButton('『𝚃𝚃𝚂』', callback_data='tts'),
             InlineKeyboardButton('『𝙸𝙼𝙳𝙱』', callback_data='extra')
         ], [            
             InlineKeyboardButton('『𝚃𝙷𝚄𝙶 𝙻𝙸𝙵𝙴』', callback_data='thug'),
-            InlineKeyboardButton('『𝚃𝚃𝚂』', callback_data='tts'),
-            InlineKeyboardButton('『𝙹𝚂𝙾𝙽』',callback_data='info')
+            InlineKeyboardButton('✴ 𝙿𝙸𝙽𝙶', callback_data='ping')
         ], [
-            InlineKeyboardButton('『𝙻𝚈𝚁𝙸𝙲𝚂』', callback_data='lyrics'),
-            InlineKeyboardButton('『𝙼𝚄𝚂𝙸𝙲』', callback_data='music'),
+            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
             InlineKeyboardButton('『𝚅𝙸𝙳𝙴𝙾』', callback_data='video')            
         ], [                        
-            InlineKeyboardButton('『𝚃𝙴𝙻𝙴𝙶𝚁𝙰𝙿𝙷』', callback_data='tgraph'),            
-#            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
+            InlineKeyboardButton('『𝚃𝙴𝙻𝙴𝙶𝚁𝙰𝙿𝙷』', callback_data='tgraph'),                        
             InlineKeyboardButton('『𝙽𝙴𝚇𝚃』', callback_data='nxt1')
         ], [
             InlineKeyboardButton('『𝙷𝙾𝙼𝙴』', callback_data='start'),            
-            InlineKeyboardButton('✴ 𝙿𝙸𝙽𝙶', callback_data='ping'),
             InlineKeyboardButton('『𝚂𝚃𝙰𝚃𝚄𝚂』', callback_data='stats')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -527,27 +524,29 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "nxt1":
         buttons = [[
 #            InlineKeyboardButton('『𝕾𝚃𝙸𝙲𝙺𝙴𝚁 𝙸𝙳』', callback_data='stid'),
-#            InlineKeyboardButton('『𝚃𝙾𝚁𝚁𝙴𝙽𝚃』', callback_data='tor'),
-            InlineKeyboardButton('『𝙲𝙰𝚁𝙱𝙾𝙽』',callback_data='carbon')                
-#        ], [
+            InlineKeyboardButton('『𝙲𝙰𝚁𝙱𝙾𝙽』',callback_data='carbon'),
+            InlineKeyboardButton('『𝙵𝚄𝙽』', callback_data='memes')
+        ], [
+            InlineKeyboardButton('『𝙹𝚂𝙾𝙽』',callback_data='info'),
+            InlineKeyboardButton('『𝚃𝙾𝚁𝚁𝙴𝙽𝚃』', callback_data='tor')
+        ], [
+            InlineKeyboardButton('『𝙻𝚈𝚁𝙸𝙲𝚂』', callback_data='lyrics'),
+            InlineKeyboardButton('『𝙼𝚄𝚂𝙸𝙲』', callback_data='music')
 #            InlineKeyboardButton('『𝙼𝚄𝚃𝙴』',callback_data='mute'),
 #            InlineKeyboardButton('『𝚁𝙴𝙿𝙾𝚁𝚃』',callback_data='report'),
 #            InlineKeyboardButton('『𝙺𝙸𝙲𝙺』', callback_data='zombies')                                                       
         ], [
 #            InlineKeyboardButton('『𝙰𝚄𝙳𝙸𝙾𝙱𝙾𝙾𝙺』',callback_data='abook'),            
-#            InlineKeyboardButton('『𝙲𝙾𝚄𝙽𝚃𝚁𝚈』', callback_data='country'),
-            InlineKeyboardButton('『𝙵𝚄𝙽』', callback_data='memes')
+#            InlineKeyboardButton('『𝙲𝙾𝚄𝙽𝚃𝚁𝚈』', callback_data='country'),            
 #        ], [
 #            InlineKeyboardButton('『𝙿𝙸𝙽』',callback_data='pin'),
 #            InlineKeyboardButton('『𝚃𝚁𝙰𝙽𝚂𝙰𝙻𝙰𝚃𝙴』', callback_data='tr'),
 #            InlineKeyboardButton('『𝙻𝙾𝙶𝙾』', callback_data='logo')
         ], [
             InlineKeyboardButton('『𝙿𝚁𝙴𝚅』', callback_data='help'),
-#            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
             InlineKeyboardButton('『𝙽𝙴𝚇𝚃』', callback_data='nxt2')
         ], [
             InlineKeyboardButton('『𝙷𝙾𝙼𝙴』', callback_data='start'),            
-            InlineKeyboardButton('✴ 𝙿𝙸𝙽𝙶', callback_data='ping'),
             InlineKeyboardButton('『𝚂𝚃𝙰𝚃𝚄𝚂』', callback_data='stats')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)        
@@ -734,11 +733,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
 #            InlineKeyboardButton('『𝙱𝙰𝙽[𝙶]』',callback_data='bang')                                             
 #        ], [
             InlineKeyboardButton('『𝙿𝚁𝙴𝚅』', callback_data='nxt1'),
-#            InlineKeyboardButton('『𝚂𝚄𝙿𝙿𝙾𝚁𝚃』', url='https://t.me/mwpro11'),
             InlineKeyboardButton('『𝙷𝙴𝙻𝙿』', callback_data='help')
         ], [
             InlineKeyboardButton('『𝙷𝙾𝙼𝙴』', callback_data='start'),            
-            InlineKeyboardButton('✴ 𝙿𝙸𝙽𝙶', callback_data='ping'),
             InlineKeyboardButton('『𝚂𝚃𝙰𝚃𝚄𝚂』', callback_data='stats')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
