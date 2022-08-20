@@ -108,7 +108,7 @@ async def next_page(bot, query):
     else:
         btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {len(files)} ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
             ]
         )
@@ -1233,7 +1233,7 @@ async def auto_filter(client, msg, spoll=False):
     else:
        btn.insert(0,
             [
-             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: ", 'reqst11'),
+             InlineKeyboardButton(f"『𝙵𝙸𝙻𝙴𝚂』: {total_results} ", 'reqst11'),
              InlineKeyboardButton(f"『𝚃𝙸𝙿𝚂』", 'tips')
             ]
         )
